@@ -14,9 +14,6 @@ def boat_list(request):
     renderer_classes = [renderers.JSONRenderer]
     db = boto3.resource('dynamodb')
     table = db.Table('boats')
-    # get all boat python objects
-    # serialize them to json
-    # return json data
     if request.method == "GET":
         boats = table.scan()
         return Response({'boats': boats.get('Items')})
